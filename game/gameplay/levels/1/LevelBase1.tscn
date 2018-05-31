@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://game/gameplay/LevelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/gameplay/levels/1/PowerSupply1-1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/gameplay/levels/1/PowerSupply1-2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/gameplay/Plug.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/gameplay/levels/1/Scanner1.tscn" type="PackedScene" id=5]
+
+[sub_resource type="NavigationPolygon" id=1]
+
+vertices = PoolVector2Array( 113, 187, 125, 198, 7, 198, 77, 187, 125, 7, 113, 151, 54, 162, 54, 126, 77, 151, 18, 162, 7, 7, 18, 126 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 1, 0, 5 ), PoolIntArray( 6, 7, 8, 3 ), PoolIntArray( 6, 3, 2, 9 ), PoolIntArray( 9, 2, 10, 11 ), PoolIntArray( 11, 10, 4, 7 ), PoolIntArray( 7, 4, 5, 8 ) ]
+outlines = [ PoolVector2Array( 7, 198, 125, 198, 125, 7, 7, 7 ), PoolVector2Array( 18, 162, 18, 126, 54, 126, 54, 162 ), PoolVector2Array( 77, 151, 77, 187, 113, 187, 113, 151 ) ]
+
+[node name="LevelBase1" index="0" instance=ExtResource( 1 )]
+level_goal = 120
+
+[node name="Navigation" parent="." index="1"]
+navpoly = SubResource( 1 )
+_sections_unfolded = [ "navpoly" ]
+
+[node name="PowerSupplies" parent="." index="3"]
+position = Vector2( 23, 29 )
+
+[node name="PowerSupply1-1" parent="PowerSupplies" index="0" instance=ExtResource( 2 )]
+position = Vector2( 0, 10 )
+
+[node name="PowerSupply1-2" parent="PowerSupplies" index="1" instance=ExtResource( 3 )]
+position = Vector2( 0, 10 )
+
+[node name="Plug" parent="Plugs" index="0" instance=ExtResource( 4 )]
+position = Vector2( 48, 106 )
+
+[node name="Plug2" parent="Plugs" index="1" instance=ExtResource( 4 )]
+position = Vector2( 104, 104 )
+
+[node name="Scanner1" parent="Scanners" index="0" instance=ExtResource( 5 )]
+position = Vector2( 36, 144 )
+
+[node name="Position2D" type="Position2D" parent="Scanners/Scanner1" index="3"]
+position = Vector2( 18, 12 )
+rotation = 0.799547
+
+[node name="Scanner2" parent="Scanners" index="1" instance=ExtResource( 5 )]
+position = Vector2( 95, 169 )
+
+[node name="Position2D" type="Position2D" parent="Scanners/Scanner2" index="3"]
+position = Vector2( 18, 12 )
+rotation = 0.790599
+

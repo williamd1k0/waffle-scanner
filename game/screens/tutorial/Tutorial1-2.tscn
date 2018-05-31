@@ -1,0 +1,151 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://game/screens/tutorial/Tutorial.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/gameplay/levels/4/PowerSupply4-2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/gameplay/Wire.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/gameplay/Plug.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/gameplay/Scanner.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "0"
+length = 0.1
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Waffle先生:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "1"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextBox/Next:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="GDScript" id=4]
+
+script/source = "extends Navigation2D
+
+signal plugged
+
+
+func _process(delta):
+	update_lines()
+
+func update_lines():
+	# The *Magic* goes here again
+	$Wire.points = get_simple_path(
+		to_local($Scanner/Position2D.global_position),
+		$Plug.position
+	)
+
+func _on_Plug_plug_update(state):
+	$Scanner.plug_update(state)
+	emit_signal('plugged')
+"
+
+[sub_resource type="NavigationPolygon" id=3]
+
+vertices = PoolVector2Array( 144, 0, 144, 256, 90, 178, 90, 142, 0, 256, 54, 178, 0, 0, 54, 142 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 2, 1, 4, 5 ), PoolIntArray( 5, 4, 6, 7 ), PoolIntArray( 7, 6, 0, 3 ) ]
+outlines = [ PoolVector2Array( 0, 256, 144, 256, 144, 0, 0, 0 ), PoolVector2Array( 54, 142, 54, 178, 90, 178, 90, 142 ) ]
+
+[node name="Tutorial1-2" index="0" instance=ExtResource( 1 )]
+mouse_filter = 2
+_sections_unfolded = [ "Mouse" ]
+next_tutorial = "res://game/screens/tutorial/Tutorial1-3.tscn"
+previous_tutorial = "res://game/screens/tutorial/Tutorial1-1.tscn"
+
+[node name="TextBox" parent="." index="0"]
+editor/display_folded = true
+self_modulate = Color( 1, 1, 1, 0 )
+mouse_filter = 2
+_sections_unfolded = [ "Mouse", "Visibility" ]
+
+[node name="Text" parent="TextBox" index="0"]
+mouse_filter = 2
+bbcode_text = "[fill][/fill]"
+text = ""
+_sections_unfolded = [ "Custom Colors", "Custom Constants", "Mouse", "custom_fonts/normal_font" ]
+
+[node name="Next" parent="TextBox" index="2"]
+visible = false
+_sections_unfolded = [ "Textures", "Visibility" ]
+
+[node name="Waffle先生" parent="." index="2"]
+visible = false
+_sections_unfolded = [ "Visibility" ]
+
+[node name="AnimationPlayer" parent="." index="4"]
+autoplay = "0"
+anims/0 = SubResource( 1 )
+anims/1 = SubResource( 2 )
+
+[node name="Navigation2D" type="Navigation2D" parent="." index="5"]
+script = SubResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="PowerSupply4-2" parent="Navigation2D" index="0" instance=ExtResource( 2 )]
+position = Vector2( 23, 34 )
+_sections_unfolded = [ "Animation", "Transform" ]
+
+[node name="Wire" parent="Navigation2D" index="1" instance=ExtResource( 3 )]
+
+[node name="Plug" parent="Navigation2D" index="2" instance=ExtResource( 4 )]
+position = Vector2( 100, 117 )
+
+[node name="Scanner" parent="Navigation2D" index="3" instance=ExtResource( 5 )]
+position = Vector2( 72, 160 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Position2D" type="Position2D" parent="Navigation2D/Scanner" index="5"]
+position = Vector2( 18, 13 )
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D" index="4"]
+navpoly = SubResource( 3 )
+enabled = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Navigation2D" index="5"]
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Navigation2D/StaticBody2D" index="0"]
+build_mode = 0
+polygon = PoolVector2Array( 7, 0, 7, 222, 34, 222, 34, 249, 144, 249, 144, 256, 0, 256, 0, 0 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Navigation2D/StaticBody2D" index="1"]
+build_mode = 0
+polygon = PoolVector2Array( 144, 256, 144, 0, 0, 0, 0, 7, 110, 7, 110, 34, 137, 34, 137, 256 )
+
+[connection signal="plugged" from="Navigation2D" to="TextBox/Next" method="show" flags=6]
+[connection signal="plug_update" from="Navigation2D/Plug" to="Navigation2D" method="_on_Plug_plug_update"]
+
+[editable path="TextBox"]

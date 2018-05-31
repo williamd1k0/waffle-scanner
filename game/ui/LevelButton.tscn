@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/textures/level-menu/LevelButton1.png" type="Texture" id=1]
+[ext_resource path="res://assets/textures/level-menu/LevelButton2.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/level-menu/LevelButton3.png" type="Texture" id=3]
+[ext_resource path="res://game/ui/LevelButton.gd" type="Script" id=4]
+[ext_resource path="res://assets/fonts/5x5.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/sfx/Selection.ogg" type="AudioStream" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 30
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = false
+use_filter = false
+extra_spacing_top = -6
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Extra Spacing", "Settings" ]
+
+[node name="LevelButton" type="TextureButton" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 2 )
+texture_disabled = ExtResource( 3 )
+script = ExtResource( 4 )
+_sections_unfolded = [ "Textures" ]
+level = 0
+
+[node name="Level" type="Label" parent="." index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1.0
+margin_right = 41.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.160784, 0.560784, 0.431373, 1 )
+text = "0"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Custom Fonts", "Margin", "custom_fonts/font" ]
+
+[node name="Click" type="AudioStreamPlayer" parent="." index="1"]
+stream = ExtResource( 6 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[connection signal="pressed" from="." to="Click" method="play"]

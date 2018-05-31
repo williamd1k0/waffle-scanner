@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Plugged.ogg-896860cc1936e33bb45cfcf3dda70928.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/Plugged.ogg"
+dest_files=[ "res://.import/Plugged.ogg-896860cc1936e33bb45cfcf3dda70928.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Lose.ogg-fead24bc5fe61b79850df239865c0712.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/Lose.ogg"
+dest_files=[ "res://.import/Lose.ogg-fead24bc5fe61b79850df239865c0712.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

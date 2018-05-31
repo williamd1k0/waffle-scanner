@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://game/gameplay/Scanner.tscn" type="PackedScene" id=1]
+
+[node name="Scanner3" index="0" instance=ExtResource( 1 )]
+high_speed = 5.0
+high_safe_time = 6.0
+high_blowup_time = 4.0
+recovery_time = 18.0
+

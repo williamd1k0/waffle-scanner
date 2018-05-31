@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/textures/ui/buttons/Previous1.png" type="Texture" id=1]
+[ext_resource path="res://assets/textures/ui/buttons/Previous2.png" type="Texture" id=2]
+[ext_resource path="res://assets/sfx/Selection.ogg" type="AudioStream" id=3]
+
+[node name="Previous" type="TextureButton" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 25.0
+margin_bottom = 25.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 2 )
+_sections_unfolded = [ "Textures" ]
+
+[node name="Click" type="AudioStreamPlayer" parent="." index="0"]
+stream = ExtResource( 3 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[connection signal="pressed" from="." to="Click" method="play"]

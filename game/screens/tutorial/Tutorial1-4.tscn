@@ -1,0 +1,230 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://game/screens/tutorial/Tutorial.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/gameplay/ElectricalOutlet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/textures/levels/4/Level4UpperWires2.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/LowVoltage.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/Voltages.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/HighVoltage.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "blink"
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "blink"
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 3 ]
+}
+
+[sub_resource type="Animation" id=3]
+
+length = 0.1
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextBox:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ "" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Waffle先生:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=4]
+
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextBox:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ "" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="Tutorial1-4" index="0" instance=ExtResource( 1 )]
+next_tutorial = "res://game/screens/tutorial/Tutorial1-5.tscn"
+previous_tutorial = "res://game/screens/tutorial/Tutorial1-3.tscn"
+
+[node name="TextBox" parent="." index="0"]
+editor/display_folded = true
+self_modulate = Color( 1, 1, 1, 0 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Waffle先生" parent="." index="2"]
+visible = false
+_sections_unfolded = [ "Animation", "Region", "Transform", "Visibility" ]
+
+[node name="Sprites" parent="." index="3"]
+editor/display_folded = true
+_sections_unfolded = [ "Visibility" ]
+
+[node name="ElectricalOutlet" parent="Sprites" index="0" instance=ExtResource( 2 )]
+position = Vector2( 72, 96 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite3" type="Sprite" parent="Sprites/ElectricalOutlet" index="2"]
+position = Vector2( 0, -8 )
+texture = ExtResource( 3 )
+vframes = 2
+_sections_unfolded = [ "Animation" ]
+
+[node name="Low" type="TextureRect" parent="Sprites/ElectricalOutlet" index="3"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -72.0
+margin_top = -60.0
+margin_right = 72.0
+margin_bottom = -20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 4 )
+stretch_mode = 4
+_sections_unfolded = [ "Rect" ]
+
+[node name="Sign" type="Sprite" parent="Sprites/ElectricalOutlet" index="4"]
+position = Vector2( 10, -20 )
+texture = ExtResource( 5 )
+vframes = 4
+_sections_unfolded = [ "Transform" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites/ElectricalOutlet/Sign" index="0"]
+root_node = NodePath("..")
+autoplay = "blink"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/blink = SubResource( 1 )
+blend_times = [  ]
+
+[node name="ElectricalOutlet2" parent="Sprites" index="1" instance=ExtResource( 2 )]
+position = Vector2( 72, 186 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Sprite2" type="Sprite" parent="Sprites/ElectricalOutlet2" index="2"]
+position = Vector2( 0, -8 )
+texture = ExtResource( 3 )
+vframes = 2
+_sections_unfolded = [ "Animation" ]
+
+[node name="High" type="TextureRect" parent="Sprites/ElectricalOutlet2" index="3"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -72.0
+margin_top = -60.0
+margin_right = 72.0
+margin_bottom = -20.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 6 )
+stretch_mode = 4
+_sections_unfolded = [ "Rect" ]
+
+[node name="Sign" type="Sprite" parent="Sprites/ElectricalOutlet2" index="4"]
+position = Vector2( 10, -20 )
+texture = ExtResource( 5 )
+vframes = 4
+frame = 2
+_sections_unfolded = [ "Transform" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites/ElectricalOutlet2/Sign" index="0"]
+root_node = NodePath("..")
+autoplay = "blink"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/blink = SubResource( 2 )
+blend_times = [  ]
+
+[node name="AnimationPlayer" parent="." index="4"]
+autoplay = "0"
+anims/0 = SubResource( 3 )
+anims/1 = SubResource( 4 )
+

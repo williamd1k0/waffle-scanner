@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/textures/levels/1/Level1UpperWires1.png" type="Texture" id=1]
+[ext_resource path="res://game/gameplay/PowerSupply.gd" type="Script" id=2]
+[ext_resource path="res://game/gameplay/ElectricalOutlet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/textures/Voltages.png" type="Texture" id=4]
+
+[node name="PowerSupply" type="Sprite" index="0"]
+texture = ExtResource( 1 )
+centered = false
+vframes = 2
+script = ExtResource( 2 )
+_sections_unfolded = [ "Animation" ]
+
+[node name="ElectricalOutlet" parent="." index="0" instance=ExtResource( 3 )]
+position = Vector2( 32, 48 )
+
+[node name="Voltage" type="Sprite" parent="." index="1"]
+texture = ExtResource( 4 )
+vframes = 4
+_sections_unfolded = [ "Animation" ]
+

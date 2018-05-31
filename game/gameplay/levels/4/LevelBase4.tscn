@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://game/gameplay/LevelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/gameplay/levels/4/PowerSupply4-1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/gameplay/levels/4/PowerSupply4-2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/gameplay/levels/4/PowerSupply4-3.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/gameplay/levels/4/PowerSupply4-4.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game/gameplay/levels/4/PowerSupply4-5.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game/gameplay/Plug.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game/gameplay/levels/4/Scanner4.tscn" type="PackedScene" id=8]
+
+[sub_resource type="NavigationPolygon" id=1]
+
+vertices = PoolVector2Array( 125, 7, 125, 198, 120, 150, 120, 114, 118, 194, 7, 198, 82, 194, 50, 194, 14, 194, 118, 158, 84, 150, 82, 158, 84, 114, 50, 158, 47, 150, 47, 114, 7, 7, 11, 114, 11, 150, 14, 158 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 1, 5, 6 ), PoolIntArray( 7, 6, 5 ), PoolIntArray( 8, 7, 5 ), PoolIntArray( 2, 1, 4, 9 ), PoolIntArray( 10, 2, 9, 11 ), PoolIntArray( 12, 10, 11, 13, 14, 15 ), PoolIntArray( 16, 0, 3, 12 ), PoolIntArray( 16, 12, 15 ), PoolIntArray( 16, 15, 17 ), PoolIntArray( 5, 16, 17, 18 ), PoolIntArray( 8, 5, 18, 19 ), PoolIntArray( 19, 18, 14, 13 ), PoolIntArray( 13, 11, 6, 7 ) ]
+outlines = [ PoolVector2Array( 7, 198, 125, 198, 125, 7, 7, 7 ), PoolVector2Array( 11, 114, 11, 150, 47, 150, 47, 114 ), PoolVector2Array( 84, 114, 84, 150, 120, 150, 120, 114 ), PoolVector2Array( 82, 158, 82, 194, 118, 194, 118, 158 ), PoolVector2Array( 14, 158, 14, 194, 50, 194, 50, 158 ) ]
+
+[node name="LevelBase4" index="0" instance=ExtResource( 1 )]
+level_goal = 470
+level_time = 120.0
+
+[node name="Navigation" parent="." index="1"]
+navpoly = SubResource( 1 )
+
+[node name="PowerSupplies" parent="." index="3"]
+position = Vector2( 20, 46 )
+
+[node name="PowerSupply4-1" parent="PowerSupplies" index="0" instance=ExtResource( 2 )]
+
+[node name="PowerSupply4-2" parent="PowerSupplies" index="1" instance=ExtResource( 3 )]
+
+[node name="PowerSupply4-3" parent="PowerSupplies" index="2" instance=ExtResource( 4 )]
+
+[node name="PowerSupply4-4" parent="PowerSupplies" index="3" instance=ExtResource( 5 )]
+
+[node name="PowerSupply4-5" parent="PowerSupplies" index="4" instance=ExtResource( 6 )]
+
+[node name="Plug" parent="Plugs" index="0" instance=ExtResource( 7 )]
+position = Vector2( 59, 121 )
+
+[node name="Plug2" parent="Plugs" index="1" instance=ExtResource( 7 )]
+position = Vector2( 76, 121 )
+
+[node name="Plug3" parent="Plugs" index="2" instance=ExtResource( 7 )]
+position = Vector2( 56, 150 )
+
+[node name="Plug4" parent="Plugs" index="3" instance=ExtResource( 7 )]
+position = Vector2( 73, 150 )
+
+[node name="Scanner4" parent="Scanners" index="0" instance=ExtResource( 8 )]
+editor/display_folded = true
+position = Vector2( 29, 132 )
+
+[node name="Position2D" type="Position2D" parent="Scanners/Scanner4" index="5"]
+position = Vector2( 18, 13 )
+
+[node name="Scanner5" parent="Scanners" index="1" instance=ExtResource( 8 )]
+editor/display_folded = true
+position = Vector2( 102, 132 )
+
+[node name="Position2D" type="Position2D" parent="Scanners/Scanner5" index="5"]
+position = Vector2( -18, 13 )
+
+[node name="Scanner6" parent="Scanners" index="2" instance=ExtResource( 8 )]
+editor/display_folded = true
+position = Vector2( 32, 176 )
+
+[node name="Position2D" type="Position2D" parent="Scanners/Scanner6" index="5"]
+position = Vector2( 18, 13 )
+
+[node name="Scanner7" parent="Scanners" index="3" instance=ExtResource( 8 )]
+editor/display_folded = true
+position = Vector2( 100, 176 )
+
+[node name="Position2D" type="Position2D" parent="Scanners/Scanner7" index="5"]
+position = Vector2( -18, 13 )
+

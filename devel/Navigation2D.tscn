@@ -1,0 +1,143 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://game/gameplay/LevelBase.gd" type="Script" id=1]
+[ext_resource path="res://game/ui/Background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/gameplay/ElectricalOutlet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/gameplay/Plug.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/gameplay/Scanner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game/ui/Timebar.tscn" type="PackedScene" id=6]
+
+
+
+[sub_resource type="NavigationPolygon" id=1]
+
+vertices = PoolVector2Array( 137, 227, 7, 227, 7, 208, 55, 208, 85, 209, 55, 171, 19, 171, 19, 152, 55, 152, 55, 115, 8, 115, 8, 85, 127, 85, 127, 115, 84, 115, 84, 152, 85, 172, 121, 172, 121, 152, 137, 209 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 5, 6, 7, 8 ), PoolIntArray( 9, 10, 11, 12 ), PoolIntArray( 12, 13, 14 ), PoolIntArray( 9, 12, 14 ), PoolIntArray( 8, 9, 14, 15 ), PoolIntArray( 16, 5, 8, 15, 17 ), PoolIntArray( 15, 18, 17 ), PoolIntArray( 3, 5, 16, 4 ), PoolIntArray( 0, 4, 19 ) ]
+outlines = [ PoolVector2Array( 7, 227, 137, 227, 137, 209, 85, 209, 85, 172, 121, 172, 121, 152, 84, 152, 84, 115, 127, 115, 127, 85, 8, 85, 8, 115, 55, 115, 55, 152, 19, 152, 19, 171, 55, 171, 55, 208, 7, 208 ) ]
+_sections_unfolded = [ "Resource" ]
+
+[node name="Navigation2D" type="Navigation2D" index="0"]
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Background" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="." index="1"]
+navpoly = SubResource( 1 )
+enabled = true
+
+[node name="Outlets" type="Node2D" parent="." index="2"]
+
+[node name="ElectricalOutlet" parent="Outlets" index="0" instance=ExtResource( 3 )]
+position = Vector2( 40, 82 )
+
+[node name="ElectricalOutlet2" parent="Outlets" index="1" instance=ExtResource( 3 )]
+position = Vector2( 100, 82 )
+voltage = 1
+
+[node name="Cables" type="Node2D" parent="." index="3"]
+editor/display_folded = true
+
+[node name="Line2D" type="Line2D" parent="Cables" index="0"]
+points = PoolVector2Array(  )
+width = 3.0
+default_color = Color( 0.419608, 0.180392, 0.560784, 1 )
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
+[node name="Line2D2" type="Line2D" parent="Cables" index="1"]
+points = PoolVector2Array(  )
+width = 3.0
+default_color = Color( 0.419608, 0.180392, 0.560784, 1 )
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill" ]
+
+[node name="Line2D3" type="Line2D" parent="Cables" index="2"]
+points = PoolVector2Array(  )
+width = 3.0
+default_color = Color( 0.419608, 0.180392, 0.560784, 1 )
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill" ]
+
+[node name="Line2D4" type="Line2D" parent="Cables" index="3"]
+points = PoolVector2Array(  )
+width = 3.0
+default_color = Color( 0.419608, 0.180392, 0.560784, 1 )
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill" ]
+
+[node name="Plugs" type="Node2D" parent="." index="4"]
+
+[node name="Plug" parent="Plugs" index="0" instance=ExtResource( 4 )]
+position = Vector2( 74, 189 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Plug2" parent="Plugs" index="1" instance=ExtResource( 4 )]
+position = Vector2( 66, 170 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Plug3" parent="Plugs" index="2" instance=ExtResource( 4 )]
+position = Vector2( 46, 100 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Plug4" parent="Plugs" index="3" instance=ExtResource( 4 )]
+position = Vector2( 116, 110 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CablesOrigin" type="Node2D" parent="." index="5"]
+editor/display_folded = true
+
+[node name="Position2D" type="Position2D" parent="CablesOrigin" index="0"]
+position = Vector2( 85, 204 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Position2D2" type="Position2D" parent="CablesOrigin" index="1"]
+position = Vector2( 55, 204 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Position2D3" type="Position2D" parent="CablesOrigin" index="2"]
+position = Vector2( 55, 148 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Position2D4" type="Position2D" parent="CablesOrigin" index="3"]
+position = Vector2( 85, 148 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Scanners" type="Node2D" parent="." index="6"]
+editor/display_folded = true
+
+[node name="Machine4" parent="Scanners" index="0" instance=ExtResource( 5 )]
+position = Vector2( 102.862, 190.626 )
+
+[node name="Machine3" parent="Scanners" index="1" instance=ExtResource( 5 )]
+position = Vector2( 36.8623, 189.626 )
+
+[node name="Machine" parent="Scanners" index="2" instance=ExtResource( 5 )]
+position = Vector2( 36.8623, 133.626 )
+
+[node name="Machine2" parent="Scanners" index="3" instance=ExtResource( 5 )]
+position = Vector2( 102.862, 133.626 )
+
+[node name="Timebar" parent="." index="7" instance=ExtResource( 6 )]
+position = Vector2( 127, 8 )
+

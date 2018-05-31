@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/gameplay/PowerSupply.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/textures/levels/4/Level4UpperWires5.png" type="Texture" id=2]
+
+[node name="PowerSupply4-5" index="0" instance=ExtResource( 1 )]
+texture = ExtResource( 2 )
+
+[node name="ElectricalOutlet" parent="." index="0"]
+position = Vector2( 56, 48 )
+voltage = 1
+
+[node name="Voltage" parent="." index="1"]
+position = Vector2( 85, -4 )
+

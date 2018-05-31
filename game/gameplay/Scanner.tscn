@@ -1,0 +1,297 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://game/gameplay/Scanner.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/scanner.png" type="Texture" id=2]
+[ext_resource path="res://assets/sfx/Explosion.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/sfx/Tremendo.ogg" type="AudioStream" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 18, 18 )
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "0-disabled"
+length = 0.1
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 0, 0, 36, 36 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Explodes:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Shaking:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "1-working-low"
+length = 1.0
+loop = true
+step = 0.13
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.13, 0.26, 0.39, 0.52, 0.65, 0.78, 0.91 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 0, 36, 36 ), Rect2( 36, 0, 36, 36 ), Rect2( 72, 0, 36, 36 ), Rect2( 0, 36, 36, 36 ), Rect2( 36, 36, 36, 36 ), Rect2( 72, 36, 36, 36 ), Rect2( 0, 72, 36, 36 ), Rect2( 36, 72, 36, 36 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Shaking:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=4]
+
+resource_name = "2-working-high"
+length = 0.37
+loop = true
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 0, 36, 36 ), Rect2( 0, 108, 36, 36 ), Rect2( 36, 108, 36, 36 ), Rect2( 72, 108, 36, 36 ), Rect2( 0, 144, 36, 36 ), Rect2( 36, 144, 36, 36 ), Rect2( 72, 144, 36, 36 ), Rect2( 0, 180, 36, 36 ), Rect2( 36, 180, 36, 36 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Shaking:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource_name = "3-almost-blowup"
+length = 0.37
+loop = true
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 0, 36, 36 ), Rect2( 0, 216, 36, 36 ), Rect2( 36, 216, 36, 36 ), Rect2( 72, 216, 36, 36 ), Rect2( 0, 252, 36, 36 ), Rect2( 36, 252, 36, 36 ), Rect2( 72, 252, 36, 36 ), Rect2( 0, 288, 36, 36 ), Rect2( 36, 288, 36, 36 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+
+resource_name = "4-blowup"
+length = 1.0
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 324, 36, 36 ), Rect2( 36, 324, 36, 36 ), Rect2( 72, 324, 36, 36 ), Rect2( 0, 360, 36, 36 ), Rect2( 36, 360, 36, 36 ), Rect2( 72, 360, 36, 36 ), Rect2( 0, 396, 36, 36 ), Rect2( 36, 396, 36, 36 ), Rect2( 72, 396, 36, 36 ), Rect2( 0, 432, 36, 36 ), Rect2( 36, 432, 36, 36 ), Rect2( 72, 432, 36, 36 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Explodes:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Shaking:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=7]
+
+resource_name = "5-recovery-low"
+length = 1.0
+loop = true
+step = 0.13
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.13, 0.26, 0.39, 0.52, 0.65, 0.78, 0.91 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 108, 0, 36, 36 ), Rect2( 144, 0, 36, 36 ), Rect2( 180, 0, 36, 36 ), Rect2( 108, 36, 36, 36 ), Rect2( 144, 36, 36, 36 ), Rect2( 180, 36, 36, 36 ), Rect2( 108, 72, 36, 36 ), Rect2( 144, 72, 36, 36 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Shaking:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=8]
+
+resource_name = "6-recovery-disabled"
+length = 1.0
+loop = true
+step = 0.06
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.13, 0.26, 0.39, 0.52, 0.65, 0.78, 0.91 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 108, 108, 36, 36 ), Rect2( 144, 108, 36, 36 ), Rect2( 180, 108, 36, 36 ), Rect2( 108, 144, 36, 36 ), Rect2( 144, 144, 36, 36 ), Rect2( 180, 144, 36, 36 ), Rect2( 108, 180, 36, 36 ), Rect2( 144, 180, 36, 36 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Shaking:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ false ]
+}
+
+[node name="Scanner" type="StaticBody2D" index="0"]
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+script = ExtResource( 1 )
+low_speed = 1.0
+high_speed = 2.0
+high_safe_time = 4.0
+high_blowup_time = 6.0
+recovery_time = 15.0
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 108, 0, 36, 36 )
+_sections_unfolded = [ "Region", "Visibility" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+root_node = NodePath("..")
+autoplay = "0-disabled"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/0-disabled = SubResource( 2 )
+anims/1-working-low = SubResource( 3 )
+anims/2-working-high = SubResource( 4 )
+anims/3-almost-blowup = SubResource( 5 )
+anims/4-blowup = SubResource( 6 )
+anims/5-recovery-low = SubResource( 7 )
+anims/6-recovery-disabled = SubResource( 8 )
+blend_times = [  ]
+
+[node name="Explodes" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource( 3 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Shaking" type="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource( 4 )
+volume_db = -10.4
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/textures/ui/bg.png" type="Texture" id=1]
+
+
+[node name="Background" type="Sprite" index="0"]
+texture = ExtResource( 1 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+

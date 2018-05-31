@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://game/gameplay/LevelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/gameplay/levels/3/PowerSupply3-1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/gameplay/levels/3/PowerSupply3-2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/gameplay/levels/3/PowerSupply3-3.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/gameplay/Plug.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game/gameplay/levels/3/Scanner3.tscn" type="PackedScene" id=6]
+
+[sub_resource type="NavigationPolygon" id=1]
+
+vertices = PoolVector2Array( 125, 7, 125, 198, 115, 173, 115, 137, 7, 198, 79, 173, 52, 173, 16, 173, 7, 7, 16, 137, 79, 137, 52, 137 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 2, 1, 4, 5 ), PoolIntArray( 6, 5, 4 ), PoolIntArray( 7, 6, 4 ), PoolIntArray( 7, 4, 8, 9 ), PoolIntArray( 8, 0, 3, 10 ), PoolIntArray( 10, 5, 6, 11 ), PoolIntArray( 8, 10, 11 ), PoolIntArray( 9, 8, 11 ) ]
+outlines = [ PoolVector2Array( 7, 198, 125, 198, 125, 7, 7, 7 ), PoolVector2Array( 16, 137, 16, 173, 52, 173, 52, 137 ), PoolVector2Array( 79, 137, 79, 173, 115, 173, 115, 137 ) ]
+
+[node name="LevelBase3" index="0" instance=ExtResource( 1 )]
+level_goal = 330
+level_time = 100.0
+
+[node name="Navigation" parent="." index="1"]
+navpoly = SubResource( 1 )
+
+[node name="PowerSupplies" parent="." index="3"]
+position = Vector2( 20, 41 )
+
+[node name="PowerSupply3-1" parent="PowerSupplies" index="0" instance=ExtResource( 2 )]
+
+[node name="PowerSupply3-2" parent="PowerSupplies" index="1" instance=ExtResource( 3 )]
+
+[node name="PowerSupply3-3" parent="PowerSupplies" index="2" instance=ExtResource( 4 )]
+
+[node name="Plug" parent="Plugs" index="0" instance=ExtResource( 5 )]
+position = Vector2( 37, 116 )
+
+[node name="Plug2" parent="Plugs" index="1" instance=ExtResource( 5 )]
+position = Vector2( 98, 116 )
+
+[node name="Scanner3" parent="Scanners" index="0" instance=ExtResource( 6 )]
+position = Vector2( 34, 155 )
+
+[node name="Position2D" type="Position2D" parent="Scanners/Scanner3" index="5"]
+position = Vector2( 18.0786, 13.328 )
+
+[node name="Scanner4" parent="Scanners" index="1" instance=ExtResource( 6 )]
+position = Vector2( 97, 155 )
+
+[node name="Position2D" type="Position2D" parent="Scanners/Scanner4" index="5"]
+position = Vector2( -18, 13 )
+

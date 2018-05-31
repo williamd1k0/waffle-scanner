@@ -1,0 +1,91 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://game/screens/tutorial/Tutorial.tscn" type="PackedScene" id=1]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "0"
+length = 0.1
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextBox:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ "" ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "1"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextBox:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ "Awesome!!! Now the machine will start copying waffles!" ]
+}
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "2"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextBox:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ "An important thing to pay attention to is that these are low voltage machines." ]
+}
+
+[sub_resource type="Animation" id=4]
+
+resource_name = "3"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextBox:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 2,
+"values": [ "But you can use high voltage outlets to copy faster..." ]
+}
+
+[node name="Tutorial1-3" index="0" instance=ExtResource( 1 )]
+next_tutorial = "res://game/screens/tutorial/Tutorial1-4.tscn"
+previous_tutorial = "res://game/screens/tutorial/Tutorial1-2.tscn"
+
+[node name="AnimationPlayer" parent="." index="4"]
+autoplay = "0"
+anims/0 = SubResource( 1 )
+anims/1 = SubResource( 2 )
+anims/2 = SubResource( 3 )
+anims/3 = SubResource( 4 )
+

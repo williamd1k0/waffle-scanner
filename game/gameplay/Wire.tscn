@@ -1,0 +1,14 @@
+[gd_scene format=2]
+
+[node name="Wire" type="Line2D" index="0"]
+points = PoolVector2Array(  )
+width = 2.0
+default_color = Color( 0.419608, 0.180392, 0.560784, 1 )
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping", "Fill", "Transform" ]
+
