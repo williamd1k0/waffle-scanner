@@ -1,4 +1,4 @@
-# ![#](icon.png) Waffle Scanner
+# ![#](icon.png) Waffle Scanner ![](https://img.shields.io/badge/godot-3.1(130fd6b)-blue.svg)
 
 >A game made for Games Factory Jam and Weekly Game Jam.
 
