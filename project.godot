@@ -8,6 +8,8 @@
 
 config_version=4
 
+_global_script_classes=[  ]
+
 [application]
 
 config/name="Waffle Scanner"
@@ -15,6 +17,8 @@ run/main_scene="res://game/screens/Splash.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="WaffleScanner"
 boot_splash/image="res://assets/textures/ui/bg.png"
+boot_splash/fullsize=false
+boot_splash/bg_color=Color( 0.156863, 0.556863, 0.431373, 1 )
 config/icon="res://icon.png"
 
 [autoload]
@@ -148,11 +152,11 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
-quality/intended_usage/framebuffer_allocation=0
-quality/intended_usage/framebuffer_allocation.mobile=0
+quality/driver/driver_name="GLES2"
+quality/intended_usage/framebuffer_allocation.mobile=2
 quality/2d/use_pixel_snap=true
-quality/filters/anisotropic_filter_level=1
 quality/shadows/filter_mode=0
 quality/depth/hdr=false
 environment/default_environment="res://default_env.tres"
 quality/dynamic_fonts/use_oversampling=false
+quality/filters/anisotropic_filter_level=1

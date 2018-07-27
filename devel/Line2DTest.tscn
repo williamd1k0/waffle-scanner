@@ -1,0 +1,11 @@
+[gd_scene format=2]
+
+[node name="Line2D" type="Line2D" index="0"]
+position = Vector2( 0, 1 )
+points = PoolVector2Array( 78, 22, 18, 104, 63, 72, 66, 101, 101, 94 )
+width = 10.0
+default_color = Color( 0.4, 0.5, 1, 1 )
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "points" ]
+
